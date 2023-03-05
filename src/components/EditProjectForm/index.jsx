@@ -1,17 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect }  from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./styles.css"
+import { Link } from "react-router-dom";
 
-function CreateProjectForm() {
+
+function EditProjectForm(props) {
+
+    const { id } = props;
+
     const [ formData, setFormData ] = useState({
         goal: "",
         title: "",
         description: "",
-        image:'',
+        image:"",
         is_open: true,
         category: ""
 
     });
+
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}projects/${id}`)
+        .then((results) => {
+            return results.json();
+        })
+        .then((data) => {
+            setFormData(data)
+        })
+    }, []);
+
 
     const handleChange = (event) => {
         const { id, value } = event.target;    //deconstruction
@@ -23,33 +38,30 @@ function CreateProjectForm() {
     };
     
     const navigate = useNavigate();
+
     
    
     const handleSubmit = (event) => {
         event.preventDefault(); 
     
         // if (formData) 
-       {postData().then((response) => {
+       {
+        putData().then((response) => {
     console.log(response)
-    if (response.detail == 'Invalid token.'){
-        alert('Please login to create campaign')
-        navigate('/login')
-    }
+    // window.localStorage.setItem("token",response.token)
 
-    else {navigate('/project/${response.id}')};
-
+    navigate(`/project/${response.id}`);
             })
         };
     
     };
 
 
-
-    const postData = async ()  => {
+    const putData = async ()  => {
         const token = window.localStorage.getItem('token')
         const response = await 
-        fetch(`${import.meta.env.VITE_API_URL}projects/`, {
-            method: 'post',
+        fetch(`${import.meta.env.VITE_API_URL}projects/${id}`, {
+            method: 'put',
             headers: {                                 
                 'Content-Type': "application/json",  
                 'Authorization':`token ${token}`          
@@ -60,13 +72,8 @@ function CreateProjectForm() {
     }
 
     return(
-    <div>
-       <div className="heading-container">
-            <h2>Start a crowdfunding campaign</h2>
-        </div> 
-
-        <form className='form'>
-         
+        <form>
+        
         <div>
             <label htmlFor='category'>Choose your category</label>
                 <select id='category' onChange={handleChange}>
@@ -78,31 +85,35 @@ function CreateProjectForm() {
 
         <div>
             <label htmlFor='goal'>Target Amount</label>
-            <input onChange={handleChange} type='number' id='goal' placeholder="Your target amount"></input>
+            <input onChange={handleChange} type='number' id='goal' value={formData.goal}></input>
         </div>
 
         <div>
             <label htmlFor='title'>Title</label>
-            <input onChange={handleChange} type="text" id='title' placeholder="Your campaign title"></input>    
+            <input onChange={handleChange} type="text" id='title' value={formData.title}></input>    
         </div>
 
         <div>
             <label htmlFor='description'>Write your story</label>
-            <textarea onChange={handleChange} id='description' rows={10} cols={40} placeholder='Campaign Description'></textarea>
+            <textarea onChange={handleChange} id='description' rows={10} cols={40} value={formData.description}></textarea>
         </div>
 
         <div>
             <label htmlFor="image">Image:</label>
-            <input type="url" id="image" pattern="https://*" onChange={handleChange} placeholder="Add URL of image for your campaign"/>
+            <input type="url" id="image" pattern="https://*" onChange={handleChange} value={formData.image}/>
         </div>
 
         <div>
-        <button className='bttn' type='submit' onClick={handleSubmit}>Create Campaign</button>
+        <button type='submit' onClick={handleSubmit}> Submit Edit </button>
+        </div>
+        <div>
+        <Link to="/"><button>Cancel Edit Campaign</button></Link>
         </div>
 
         </form>
-    </div>  
+        
     )
 };
 
-export default CreateProjectForm;
+
+export default EditProjectForm;

@@ -1,4 +1,4 @@
-.row {
+  .row {
     display: flex;
     justify-content: space-between;
     flex-basis: 10%;
@@ -9,8 +9,41 @@
   }
   
   .block {
-    background-color: #e0e0e0;
-    padding: 1rem;
-    margin: 0.5rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem;
+
   }
+
+  .nav-items {
+    display: flex;
+    flex-basis: 20%;
+    justify-content: space-around;
+    text-decoration: none;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+
+  } 
+
+  .nav-items a{
+    text-decoration: none;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+
+  }
+  
+
+  /* .nav-items:hover{
+    color: red;
+  } */
+
+
+ 
+/* .project{
+    background-color:#E444A0;
+    border-radius: 0.5rem;
+    color:white;
+    ;
+
+} */
+   

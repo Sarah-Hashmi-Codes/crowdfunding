@@ -7,6 +7,10 @@ const [ credentials, setCredentials ] = useState({
     password: "",
 });
 
+const [ error, setErrors ] = useState();
+
+const navigate = useNavigate();
+
 const handleChange = (event) => {
     const {id, value } = event.target;    //deconstruction
     setCredentials((prevCredentials) => ({
@@ -16,18 +20,29 @@ const handleChange = (event) => {
     console.log(event)
 };
 
-const navigate = useNavigate();
+// const navigate = useNavigate();
 
 const handleSubmit = (event) => {
     event.preventDefault(); 
 
     if (credentials.username && credentials.password) {
         postData().then((response) => {
-            window.localStorage.setItem("token", response.token)
+            if (response.token) {
+
+            window.localStorage.setItem("token", response.token);
+
+            window.localStorage.setItem("username", credentials.username);
+
             navigate('/');
-        })
+            
+            
+            } else {
+                
+                setErrors(Object.values(response) [0] [0]);
+            }
+        });
     }
-}
+};
 
 const postData = async ()  => {
     const response = await fetch(`${import.meta.env.VITE_API_URL}api-token-auth/`, {
@@ -35,14 +50,17 @@ const postData = async ()  => {
         headers: {                                 
             'Content-Type': "application/json",            
         },
-        body: JSON.stringify(credentials)
-    })
+        body: JSON.stringify(credentials),
+    });
     return response.json();
-}
+};
 
 console.log(credentials)
     return(
-        <form>
+        <div>
+            {error && <h1>{error}</h1>}
+
+         <form>
 
         <div>
             <label htmlFor='username'>Username:</label>
@@ -54,11 +72,13 @@ console.log(credentials)
             <input onChange={handleChange} type='password' id='password' placeholder='Your password'></input>
         </div>
 
-        <button type='submit' onClick={handleSubmit}>Login</button>
+        <div><button type='submit' onClick={handleSubmit}>Login</button></div>
 
         </form>
 
-    )
+        </div>
+
+    );
 };
 
 export default LoginForm;

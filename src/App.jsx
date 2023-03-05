@@ -5,6 +5,8 @@ import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
 import LoginPage  from './pages/LoginPage';
 import CreateProjectPage from './pages/CreateProjectPage';
+import EditProjectPage from './pages/EditProjectPage';
+import PledgePage from './pages/PledgePage';
 
 // import './App.css'
 
@@ -35,7 +37,15 @@ const router = createBrowserRouter([
       },
       { path: '/createproject',
         element: <CreateProjectPage />
+      },
+      { path: '/editproject/:id',
+        element: <EditProjectPage />
+      },
+      { path: '/project/:id/pledges',
+        element: <PledgePage />
+
       }
+
   
       
     ]

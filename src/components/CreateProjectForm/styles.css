@@ -1,0 +1,55 @@
+
+.form{
+    align-items: center;
+    padding-top: 50px;
+    margin-left: 50px;
+    margin-right: 75px;
+  }
+
+.heading-container{
+  background-color: #48B681;
+  height:100px;
+}
+
+.heading-container h2{
+  color:white;
+  background-color:#48B681;
+  padding-top: 31px;
+  margin-top: 0;
+}
+
+.form input, textarea,select{
+  display: block;
+  width: 100%;
+  padding: .5rem .8rem .5rem .8rem;
+  margin: .9vw 0 ;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form textarea{
+  height: 15vh;
+}
+
+
+.form label{
+  display: inline-block;
+  text-align: center;
+  margin-top:10px;
+  font-family: Arial, Helvetica, sans-serif;
+  color:black;
+  font-size: 15px;
+}
+
+.bttn {
+  background-color:#FEB80A;
+  color: white;
+  border: 1px solid #cb376a;
+  margin-top: 5rem;
+  padding: 0.9375rem 1.875rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
