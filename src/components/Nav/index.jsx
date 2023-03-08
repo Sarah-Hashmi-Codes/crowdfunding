@@ -15,15 +15,16 @@ function Nav() {
             <div className="logo">
             <Link to="/">
                 <img src={Logo} height={40} width={150} alt="logo"></img>
-            </Link>
+            </Link> 
             </div>
             
             <div className="nav-items">
             <Link className="" to="/">Home</Link>
 
             <Link className="project" to='/createproject'>Create Campaign</Link>
-            <Link to='/login'>Login</Link>
-            <Link to="/">Logout</Link>
+            <Link to='/discover'>Discover</Link>
+            <Link to='/login'>Log In</Link>
+            <Link to="/">Log Out</Link>
             </div>
         </nav>
     )

@@ -72,7 +72,7 @@ body {
   cursor: pointer;
 }
 .hero-button:hover {
-  background-color: #cb376a;
+  background-color: red;
   border: 1px solid #db7598;
 }
 /* .body-container{

@@ -7,6 +7,7 @@ import LoginPage  from './pages/LoginPage';
 import CreateProjectPage from './pages/CreateProjectPage';
 import EditProjectPage from './pages/EditProjectPage';
 import PledgePage from './pages/PledgePage';
+import AllProjectsPage from './pages/AllProjectsPage';
 
 // import './App.css'
 
@@ -43,6 +44,9 @@ const router = createBrowserRouter([
       },
       { path: '/project/:id/pledges',
         element: <PledgePage />
+      },
+      {path: '/discover',
+      element: <AllProjectsPage />
 
       }
 

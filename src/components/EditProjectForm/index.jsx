@@ -43,6 +43,8 @@ function EditProjectForm(props) {
    
     const handleSubmit = (event) => {
         event.preventDefault(); 
+
+        
     
         // if (formData) 
        {

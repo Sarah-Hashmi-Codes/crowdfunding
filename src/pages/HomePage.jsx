@@ -47,7 +47,7 @@ useEffect (() => {
                     Bring Change!
                 </h2>
          
-                <button type="button" className="hero-button">Donate Now &raquo;</button> {""}
+                <Link to="/discover"><button type="button" className="hero-button">Donate Now &raquo;</button></Link> {""}
 
                 <Link to="/createproject"><button type="button" className="hero-button">Create campaign &raquo;</button></Link>
 
