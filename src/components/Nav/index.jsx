@@ -9,6 +9,11 @@ function Nav() {
     // if (isuserloggedin) {
     //     createcampaignbutton=(<Link className="project" to='/createproject'>Create Campaign</Link>)
     // }
+
+    const logout = () => {
+        window.localStorage.removeItem("token");
+    
+    };
     return (
 
         <nav className="row block center">
@@ -24,7 +29,7 @@ function Nav() {
             <Link className="project" to='/createproject'>Create Campaign</Link>
             <Link to='/discover'>Discover</Link>
             <Link to='/login'>Log In</Link>
-            <Link to="/">Log Out</Link>
+            <Link to="/" onClick={logout}>Log Out</Link>
             </div>
         </nav>
     )
