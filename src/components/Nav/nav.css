@@ -15,6 +15,7 @@
 
   .nav-items {
     display: flex;
+    flex-direction: column;
     flex-basis: 25%;
     justify-content: space-around;
     text-decoration: none;
