@@ -9,7 +9,7 @@ function CreateProjectForm() {
         description: "",
         image:'',
         is_open: true,
-        category: ""
+        category: "Health"
 
     });
 
@@ -33,10 +33,10 @@ function CreateProjectForm() {
     console.log(response)
     if (response.detail == 'Invalid token.'){
         alert('Please login to create campaign')
-        navigate('/login')
+        navigate(`/login`)
     }
 
-    else {navigate('/project/${response.id}')};
+    else {navigate(`/project/${response.id}`)};
 
             })
         };
@@ -70,9 +70,9 @@ function CreateProjectForm() {
         <div>
             <label htmlFor='category'>Choose your category</label>
                 <select id='category' onChange={handleChange}>
-                    <option value="health">Health</option>
-                    <option value="education">Education</option>
-                    <option value="disaster relief">Disaster Relief</option>
+                    <option value="Health">Health</option>
+                    <option value="Education">Education</option>
+                    <option value="Disaster Relief">Disaster Relief</option>
                 </select>
         </div>
 
